@@ -27,8 +27,7 @@ export class RecordFetchComponent implements OnInit, OnDestroy {
     this.getUsers(null);
   }
 
-  UserProfile(usr) {
-    alert(usr);
+  UserProfile(usr) {    
     this.userService.setData(usr);
     this.router.navigateByUrl("/User");
   }
@@ -41,6 +40,7 @@ export class RecordFetchComponent implements OnInit, OnDestroy {
     this.users = [];
     this.subscriptionManager.add(
       this.userService.getUserList(searchValue).subscribe(res => {
+        console.log(res);
         if (res && res.items) {
           this.users = res.items;
         }
